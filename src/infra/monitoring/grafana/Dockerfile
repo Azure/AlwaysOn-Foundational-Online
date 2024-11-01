@@ -1,5 +1,5 @@
 # Even though we're not building but only installing, we're still doing multi-stage because grafana does not have NPM
-FROM node:22 as builder
+FROM node:23 as builder
 
 # Copy all source files over to our working directory
 WORKDIR /app

@@ -5,7 +5,7 @@ COPY . ./
 RUN dotnet publish AlwaysOn.CatalogService -c Release -o AlwaysOn.CatalogService/out
 
 # Create application container
-FROM mcr.microsoft.com/dotnet/aspnet:8.0
+FROM mcr.microsoft.com/dotnet/aspnet:9.0
 # Update and upgrade
 RUN apt-get update && apt-get upgrade -y \
     && rm -rf /var/lib/apt/lists/*

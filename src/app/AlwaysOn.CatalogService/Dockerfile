@@ -1,5 +1,5 @@
 # Create build environment
-FROM mcr.microsoft.com/dotnet/sdk:8.0.302-1 AS build-env
+FROM mcr.microsoft.com/dotnet/sdk:9.0.100 AS build-env
 WORKDIR /app
 COPY . ./
 RUN dotnet publish AlwaysOn.CatalogService -c Release -o AlwaysOn.CatalogService/out

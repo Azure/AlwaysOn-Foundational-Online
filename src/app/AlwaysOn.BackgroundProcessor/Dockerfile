@@ -4,7 +4,7 @@ WORKDIR /app
 COPY . ./
 RUN dotnet publish AlwaysOn.BackgroundProcessor -c Release -o AlwaysOn.BackgroundProcessor/out
 
-FROM mcr.microsoft.com/dotnet/aspnet:8.0
+FROM mcr.microsoft.com/dotnet/aspnet:9.0
 
 # Update and upgrade
 RUN apt-get update && apt-get upgrade -y \

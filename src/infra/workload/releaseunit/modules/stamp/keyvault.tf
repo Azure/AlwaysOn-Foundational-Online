@@ -65,6 +65,8 @@ data "azurerm_monitor_diagnostic_categories" "kv" {
 }
 
 resource "azurerm_monitor_diagnostic_setting" "kv" {
+  count = var.disable_diagnostics ? 0 : 1 # disable diagnostics if var.disable_diagnostics=true
+  
   name                       = "kvladiagnostics"
   target_resource_id         = azurerm_key_vault.stamp.id
   log_analytics_workspace_id = data.azurerm_log_analytics_workspace.stamp.id

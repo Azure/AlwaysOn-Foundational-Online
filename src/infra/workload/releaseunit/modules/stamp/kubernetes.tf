@@ -115,6 +115,8 @@ data "azurerm_monitor_diagnostic_categories" "aks" {
 }
 
 resource "azurerm_monitor_diagnostic_setting" "aks" {
+  count = var.disable_diagnostics ? 0 : 1 # disable diagnostics if var.disable_diagnostics=true
+
   name                       = "aksladiagnostics"
   target_resource_id         = azurerm_kubernetes_cluster.stamp.id
   log_analytics_workspace_id = data.azurerm_log_analytics_workspace.stamp.id

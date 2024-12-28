@@ -94,6 +94,8 @@ data "azurerm_monitor_diagnostic_categories" "vnet" {
 }
 
 resource "azurerm_monitor_diagnostic_setting" "vnet" {
+  count = var.disable_diagnostics ? 0 : 1 # disable diagnostics if var.disable_diagnostics=true
+  
   name                       = "vnetladiagnostics"
   target_resource_id         = azurerm_virtual_network.stamp.id
   log_analytics_workspace_id = data.azurerm_log_analytics_workspace.stamp.id

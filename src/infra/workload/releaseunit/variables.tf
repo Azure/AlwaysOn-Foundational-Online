@@ -38,6 +38,12 @@ variable "contact_email" {
   default     = "OVERWRITE@noreply.com"
 }
 
+variable "disable_diagnostics" {
+  description = "Disable all diagnostic settings (cost saving)"
+  type        = bool
+  default     = false
+}
+
 variable "alerts_enabled" {
   description = "Enable alerts?"
   type        = bool

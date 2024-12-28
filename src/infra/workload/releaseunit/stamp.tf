@@ -57,4 +57,6 @@ module "stamp" {
   alerts_enabled       = var.alerts_enabled
   api_key              = random_password.api_key.result
   ai_adaptive_sampling = var.ai_adaptive_sampling
+
+  disable_diagnostics = var.disable_diagnostics
 }

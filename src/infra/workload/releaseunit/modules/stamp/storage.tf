@@ -72,6 +72,8 @@ data "azurerm_monitor_diagnostic_categories" "storage_public" {
 }
 
 resource "azurerm_monitor_diagnostic_setting" "storage_public" {
+  count = var.disable_diagnostics ? 0 : 1 # disable diagnostics if var.disable_diagnostics=true
+  
   name                       = "storageladiagnostics"
   target_resource_id         = azurerm_storage_account.public.id
   log_analytics_workspace_id = data.azurerm_log_analytics_workspace.stamp.id
@@ -101,6 +103,8 @@ data "azurerm_monitor_diagnostic_categories" "storage_public_blob" {
 }
 
 resource "azurerm_monitor_diagnostic_setting" "storage_public_blob" {
+  count = var.disable_diagnostics ? 0 : 1 # disable diagnostics if var.disable_diagnostics=true
+
   name                       = "storageblobladiagnostics"
   target_resource_id         = "${azurerm_storage_account.public.id}/blobServices/default/"
   log_analytics_workspace_id = data.azurerm_log_analytics_workspace.stamp.id
@@ -133,6 +137,8 @@ data "azurerm_monitor_diagnostic_categories" "storage_private" {
 }
 
 resource "azurerm_monitor_diagnostic_setting" "storage_private" {
+  count = var.disable_diagnostics ? 0 : 1 # disable diagnostics if var.disable_diagnostics=true
+
   name                       = "storageladiagnostics"
   target_resource_id         = azurerm_storage_account.private.id
   log_analytics_workspace_id = data.azurerm_log_analytics_workspace.stamp.id
@@ -162,6 +168,8 @@ data "azurerm_monitor_diagnostic_categories" "storage_private_blob" {
 }
 
 resource "azurerm_monitor_diagnostic_setting" "storage_private_blob" {
+  count = var.disable_diagnostics ? 0 : 1 # disable diagnostics if var.disable_diagnostics=true
+
   name                       = "storageblobladiagnostics"
   target_resource_id         = "${azurerm_storage_account.private.id}/blobServices/default/"
   log_analytics_workspace_id = data.azurerm_log_analytics_workspace.stamp.id
